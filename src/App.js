@@ -42,9 +42,15 @@ export default class Calculator extends React.Component{
 
   onButtonPress(btnVal){
       this.setState((prevState)=>{
-          return{
-              scrStr : prevState.scrStr + btnVal
-          };
+          if(prevState.scrStr!=='math error'){
+              return{
+                  scrStr : prevState.scrStr + btnVal
+              };
+          }else{
+              return{
+                  scrStr : '' + btnVal
+              };
+          }
       });
   }
 
@@ -71,18 +77,23 @@ export default class Calculator extends React.Component{
 
   calcRes(){
       this.setState((prevState) =>{
-          let result = evaluate(prevState.scrStr);
-          if(result){
-              if(prevState.scrStr){
-                  return{
-                      scrStr : String(evaluate(prevState.scrStr))
-                  };
-              }
-          }else{
-              return{
-                  scrStr : 'math error'
-              }
-          }
+        let result
+        try{
+            result = evaluate(prevState.scrStr);
+        }catch(err){
+            result = ''
+        }
+        if(result){
+            if(prevState.scrStr){
+                return{
+                    scrStr : result
+                };
+            }
+        }else{
+            return{
+                scrStr : 'math error'
+            }
+        }
       });
   }
 
