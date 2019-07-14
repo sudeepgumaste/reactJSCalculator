@@ -86,7 +86,7 @@ export default class Calculator extends React.Component{
         if(result){
             if(prevState.scrStr){
                 return{
-                    scrStr : result
+                    scrStr : String(result)
                 };
             }
         }else{
