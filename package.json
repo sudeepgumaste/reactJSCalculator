@@ -1,10 +1,10 @@
 {
-  "name": "Calculator",
+  "name": "calculatorv1",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/sudeepgumaste/reactJSCalculator.git",
   "author": "Sudeep G <sudeepgumaste@github.com>",
-  "license": "GNUv2",
+  "license": "MIT",
   "private": false,
   "dependencies": {
     "babel-preset-env": "1.5.2",
