@@ -79,7 +79,7 @@ export default class Calculator extends React.Component{
       this.setState((prevState) =>{
         let result
         try{
-            result = evaluate(prevState.scrStr).toFixed(8);
+            result = evaluate(prevState.scrStr).toFixed(12);
         }catch(err){
             result = ''
         }
