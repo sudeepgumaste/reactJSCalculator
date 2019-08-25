@@ -1,46 +1,14 @@
 import React from 'react';
 import {evaluate} from 'mathjs';
-import './App.css'
-
-const Screen = (props) =>{
-  return(
-      <div className="screen">
-          <p>{props.dispValue}</p>
-      </div>
-  );
-}
-
-class Button extends React.Component{
-  constructor(props){
-      super(props);
-      this.onButtonPress = this.onButtonPress.bind(this);
-  }
-
-  onButtonPress(){
-      this.props.onButtonPress(this.props.value);
-  }
-
-  render(){
-      return(
-          <button onClick={this.onButtonPress}>{this.props.value}</button>
-      );
-  }
-}
-
+import Screen from './screen';
+import Button from './button';
 
 export default class Calculator extends React.Component{
-  constructor(props){
-      super(props);
-      this.onButtonPress = this.onButtonPress.bind(this);
-      this.clrBtn = this.clrBtn.bind(this);
-      this.delBack = this.delBack.bind(this);
-      this.calcRes = this.calcRes.bind(this);
-      this.state = {
-          scrStr : ''
-      };
+  state = {
+    scrStr : ''
   }
 
-  onButtonPress(btnVal){
+  onButtonPress = (btnVal) =>{
       this.setState((prevState)=>{
           if(prevState.scrStr!=='math error'){
               return{
@@ -54,7 +22,7 @@ export default class Calculator extends React.Component{
       });
   }
 
-  clrBtn(){
+  clrBtn = () => {
       this.setState(()=>{
           return{
               scrStr : ''
@@ -62,7 +30,7 @@ export default class Calculator extends React.Component{
       });
   }
 
-  delBack(){
+  delBack = () => {
       this.setState((prevState) =>{
           if(prevState.scrStr==='math error' || prevState.scrStr==='Infinity' || prevState.scrStr==='-Infinity' || prevState.scrStr==='NaN'){
               return{
@@ -75,7 +43,7 @@ export default class Calculator extends React.Component{
       });
   }
 
-  calcRes(){
+  calcRes = () => {
       this.setState((prevState) =>{
         let result
         try{
@@ -105,11 +73,11 @@ export default class Calculator extends React.Component{
               <Button value={'%'} onButtonPress={this.onButtonPress}/>
               <button onClick = {this.calcRes}>=</button>
               <button onClick = {this.delBack}><i className="fas fa-backspace"></i></button>
-              {[7,8,9].map((num)=>(<Button value={num} onButtonPress={this.onButtonPress}/>))}
+              {[7,8,9].map((num)=>(<Button key={num} value={num} onButtonPress={this.onButtonPress}/>))}
               <Button value={'+'} onButtonPress={this.onButtonPress}/>
-              {[4,5,6].map((num)=>(<Button value={num} onButtonPress={this.onButtonPress}/>))}
+              {[4,5,6].map((num)=>(<Button key={num} value={num} onButtonPress={this.onButtonPress}/>))}
               <Button value={'-'} onButtonPress={this.onButtonPress}/>
-              {[1,2,3].map((num)=>(<Button value={num} onButtonPress={this.onButtonPress}/>))}
+              {[1,2,3].map((num)=>(<Button key={num} value={num} onButtonPress={this.onButtonPress}/>))}
               <Button value={'*'} onButtonPress={this.onButtonPress}/>
               <Button value={0} onButtonPress={this.onButtonPress}/>
               <Button value={'.'} onButtonPress={this.onButtonPress}/>
