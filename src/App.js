@@ -64,7 +64,7 @@ export default class Calculator extends React.Component{
 
   delBack(){
       this.setState((prevState) =>{
-          if(prevState.scrStr==='math error' || prevState.scrStr==='Infinity' || prevState.scrStr==='-Infinity'){
+          if(prevState.scrStr==='math error' || prevState.scrStr==='Infinity' || prevState.scrStr==='-Infinity' || prevState.scrStr==='NaN'){
               return{
                   scrStr : ''
               }
@@ -79,7 +79,7 @@ export default class Calculator extends React.Component{
       this.setState((prevState) =>{
         let result
         try{
-            result = evaluate(prevState.scrStr);
+            result = evaluate(prevState.scrStr).toFixed(12);
         }catch(err){
             result = ''
         }
