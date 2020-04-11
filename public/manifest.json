@@ -1,14 +1,16 @@
 {
-  "short_name": "React Calculator",
-  "name": "Create calculator app",
+  "short_name": "Calculator",
+  "name": "React Calculator App",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "64x64",
       "type": "image/x-icon"
-    },{
-      "src": "logo.svg",
-      "sizes": "500x500"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": ".",
