@@ -32,4 +32,4 @@ or
 npm run-script build
 ```
 ## Hosted here
-http://reactjs-calc.herokuapp.com/
+https://reactcalculatorapp.netlify.com/
